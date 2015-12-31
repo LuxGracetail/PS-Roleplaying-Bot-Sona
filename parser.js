@@ -183,7 +183,7 @@ exports.parse = {
 						this.updateBlacklistRegex(roomid);
 					}
 				}
-				if (config.serverid === 'showdown') {
+				if (config.serverid === 'sora') {
 					this.amphyVoices = [];
 					this.freeroamTimeouts = {};
 					this.conquestTimeouts = {};
@@ -422,7 +422,7 @@ exports.parse = {
 		message = message.trim();
 		if (room.charAt(0) === ',') {
 			// auto accept invitations to rooms
-			if (message.substr(0, 8) === '/invite ' && this.hasRank(by, '%@&~') && !(config.serverid === 'showdown' && toId(message.substr(8)) === 'lobby')) {
+			if (message.substr(0, 8) === '/invite ' && this.hasRank(by, '%@&~') && !(config.serverid === 'sora' && toId(message.substr(8)) === 'lobby')) {
 				this.say('', '/join ' + message.substr(8));
 			}
 			if (config.logpms) console.log(new Date().toString() + " Private Message from ".red + by.cyan + ": ".cyan + message);
