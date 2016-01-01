@@ -803,8 +803,8 @@ exports.commands = {
 		}
 		if (config.serverid === 'showdown' && this.RP[room].setAt) {
 			nextVoid = splitDoc(this.RP[room].plot);
-			if (this.RP.void[room].length === 2) this.RP.void[room].shift();
-			this.RP.void[room].push(nextVoid);
+/*			if (this.RP.void[room].length === 2) this.RP.void[room].shift();
+*/			this.RP.void[room][0] = (nextVoid);
 			
 			if (/conquest/i.test(toId(this.RP[room].plot))){
 				clearTimeout(this.conquestTimeouts[room]);
@@ -839,10 +839,8 @@ exports.commands = {
 	},
 	setvoid: function(arg, by, room) {
 		if (config.serverid !== 'showdown' || !(room in this.RP) || this.RP[room].plot || !arg || !this.hasRank(by, '%@#&~')) return false;
-		var spl = arg.split(', ');
-		console.log(spl);
-		if(spl.length !== 2) return this.say(room, 'Void only accepts 2 arguments.');
-		this.RP.void[room] = [spl[0],spl[1]];
+		console.log(arg);
+		this.RP.void[room] = [arg];
 		this.writeSettings();
 		this.splitMessage('>' + room + '\n|c|~luxlucario|' + config.commandcharacter + 'void');
 	},
